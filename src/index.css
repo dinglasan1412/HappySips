@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+:root {
+  --taro: #5B4088;
+  --taro-deep: #3F2C63;
+  --taro-light: #EDE7F7;
+  --taro-pale: #CBBEE3;
+  --milk: #FBF8F3;
+  --pearl: #2A2233;
+  --brown-sugar: #A8672C;
+  --brown-sugar-light: #F5E6D2;
+  --matcha: #5C7850;
+  --matcha-light: #E7EFE1;
+  --lychee: #B54F56;
+  --lychee-light: #FBE5E6;
+}
+
+body {
+  margin: 0;
+  font-family: 'Manrope', system-ui, -apple-system, sans-serif;
+}
+
+.font-display { font-family: 'Fraunces', Georgia, serif; }
+.font-body { font-family: 'Manrope', system-ui, -apple-system, sans-serif; }
+.font-receipt { font-family: 'JetBrains Mono', 'Courier New', monospace; }
+
+.bg-taro { background-color: var(--taro); }
+.bg-taro-deep { background-color: var(--taro-deep); }
+.bg-taro-light { background-color: var(--taro-light); }
+.bg-milk { background-color: var(--milk); }
+.bg-white-15 { background-color: rgba(255,255,255,0.15); }
+.text-taro { color: var(--taro); }
+.text-taro-deep { color: var(--taro-deep); }
+.text-taro-pale { color: var(--taro-pale); }
+.text-pearl { color: var(--pearl); }
+.border-taro { border-color: var(--taro); }
+
+.bg-brown-sugar-light { background-color: var(--brown-sugar-light); }
+.text-brown-sugar { color: var(--brown-sugar); }
+.bg-matcha-light { background-color: var(--matcha-light); }
+.text-matcha { color: var(--matcha); }
+.bg-lychee-light { background-color: var(--lychee-light); }
+.text-lychee { color: var(--lychee); }
+
+.btn-primary { background-color: var(--taro); color: white; transition: background-color .15s ease; }
+.btn-primary:hover { background-color: var(--taro-deep); }
+.btn-primary:disabled { background-color: #E2E8F0; color: #94A3B8; cursor: not-allowed; }
+
+.nav-item { color: var(--taro-pale); transition: background-color .15s ease, color .15s ease; }
+.nav-item:hover { background-color: var(--taro-deep); color: white; }
+.nav-item-active { background-color: white; color: var(--taro-deep); }
+
+.focus-taro:focus { outline: none; border-color: var(--taro); box-shadow: 0 0 0 3px var(--taro-light); }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
