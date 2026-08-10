@@ -490,7 +490,7 @@ function Sidebar({ view, setView, currentUser, onLogout, pendingCount }) {
     <div className="w-16 sm:w-56 flex flex-col shrink-0 min-h-screen bg-taro-deep">
       <div className="flex items-center gap-2 px-4 sm:px-5 py-6 justify-center sm:justify-start">
         <div className="w-9 h-9 rounded-full bg-white-15 flex items-center justify-center shrink-0">
-          <img src="/favicon.svg" alt="Logo" className="w-5 h-5 object-contain" />
+          <BobaCupIcon size={18} className="text-white" />
         </div>
         <div className="hidden sm:block">
           <p className="font-display font-semibold text-sm leading-tight text-white">{SHOP_NAME}</p>
