@@ -26,7 +26,7 @@ function BobaCupIcon({ className, size = 22 }) {
 // ============================================================
 // Constants & seed data
 // ============================================================
-const SHOP_NAME = 'Pearl & Brew';
+const SHOP_NAME = 'Happy Sips';
 const UNITS = ['kg', 'g', 'L', 'ml', 'pc'];
 const INVENTORY_CATEGORIES = ['Ingredient', 'Supplies'];
 const MENU_CATEGORIES = ['Milk Tea', 'Fruit Tea', 'Fruit Soda'];
