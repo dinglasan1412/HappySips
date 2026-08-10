@@ -1,4 +1,4 @@
-# Pearl & Brew — Milk Tea Shop Management System
+# Happy Sips — Milk Tea Shop Management System
 
 A login, dashboard, inventory, and point-of-sale system for a milk tea shop, built with React + Vite (frontend) and Vercel serverless functions + Upstash Redis (shared backend).
 

@@ -77,7 +77,7 @@ function buildTimestamp(dateStr, timeStr) {
 // same store via these calls (see /api/data.js and /api/login.js).
 // Reads are public; writes require a valid token from /api/login.
 // ------------------------------------------------------------
-const SESSION_KEY = 'pearlbrew:session';
+const SESSION_KEY = 'happysips:session';
 
 async function apiGet(key) {
   const res = await fetch(`/api/data?key=${encodeURIComponent(key)}`);
