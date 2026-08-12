@@ -402,9 +402,7 @@ function LoginScreen({ onLogin }) {
     <div className="min-h-screen flex items-center justify-center p-4 font-body" style={{ background: 'linear-gradient(135deg, #3F2C63, #5B4088 55%, #7A5AAE)' }}>
       <div className="bg-white rounded-3xl shadow-2xl w-full max-w-sm p-8">
         <div className="flex flex-col items-center mb-6">
-          <div className="w-16 h-16 rounded-full bg-taro-light flex items-center justify-center mb-3">
-            <img src="/favicon.svg" alt={SHOP_NAME} width={30} height={30} />
-          </div>
+          <img src="/favicon.svg" alt={SHOP_NAME} width={64} height={64} className="mb-3" />
           <h1 className="font-display text-xl font-semibold text-pearl">{SHOP_NAME}</h1>
           <p className="text-sm text-slate-400">Shop Management System</p>
         </div>
@@ -472,9 +470,7 @@ function Sidebar({ view, setView, currentUser, onLogout, pendingCount }) {
   return (
     <div className="w-16 sm:w-56 flex flex-col shrink-0 min-h-screen bg-taro-deep">
       <div className="flex items-center gap-2 px-4 sm:px-5 py-6 justify-center sm:justify-start">
-        <div className="w-9 h-9 rounded-full bg-white-15 flex items-center justify-center shrink-0">
-          <img src="/favicon.svg" alt={SHOP_NAME} width={32} height={32} />
-        </div>
+        <img src="/favicon.svg" alt={SHOP_NAME} width={36} height={36} className="shrink-0" />
         <div className="hidden sm:block">
           <p className="font-display font-semibold text-sm leading-tight text-white">{SHOP_NAME}</p>
           <p className="text-xs text-taro-pale">Shop Manager</p>
@@ -943,9 +939,7 @@ function SalesView({ menu, sales, setSales, currentUser }) {
                 key={item.id}
                 className="bg-white border border-slate-100 rounded-2xl p-4 shadow-sm hover:shadow-md transition-shadow"
               >
-                <div className="w-9 h-9 rounded-xl bg-taro-light flex items-center justify-center mb-3">
-                  <img src="/favicon.svg" alt="" width={16} height={16} />
-                </div>
+                <img src="/favicon.svg" alt="" width={36} height={36} className="mb-3" />
                 <p className="text-sm font-semibold text-slate-700 leading-snug">{item.name}</p>
                 <p className="text-xs text-slate-400 mt-1 mb-3">{item.category}</p>
                 <div className="grid grid-cols-2 gap-1.5">
