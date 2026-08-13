@@ -18,6 +18,22 @@ const SIZES = ['Medium', 'Large'];
 const CATEGORY_COLORS = { 'Milk Tea': '#5B4088', 'Fruit Tea': '#A8672C', 'Fruit Soda': '#5C7850', 'Other': '#94A3B8' };
 const PAYMENT_COLORS = { Cash: '#5B4088', GCash: '#5C7AA8', Card: '#A8672C', Other: '#94A3B8' };
 
+// Every place the logo appears goes through here, so the right-click/drag
+// deterrents only need to be defined once.
+function Logo({ size, alt = SHOP_NAME, className = '' }) {
+  return (
+    <img
+      src="/favicon.svg"
+      alt={alt}
+      width={size}
+      height={size}
+      draggable={false}
+      onContextMenu={(e) => e.preventDefault()}
+      className={`protected-image ${className}`}
+    />
+  );
+}
+
 // ============================================================
 // Helpers
 // ============================================================
@@ -402,7 +418,7 @@ function LoginScreen({ onLogin }) {
     <div className="min-h-screen flex items-center justify-center p-4 font-body" style={{ background: 'linear-gradient(135deg, #3F2C63, #5B4088 55%, #7A5AAE)' }}>
       <div className="bg-white rounded-3xl shadow-2xl w-full max-w-sm p-8">
         <div className="flex flex-col items-center mb-6">
-          <img src="/favicon.svg" alt={SHOP_NAME} width={64} height={64} className="mb-3" />
+          <Logo size={64} className="mb-3" />
           <h1 className="font-display text-xl font-semibold text-pearl">{SHOP_NAME}</h1>
           <p className="text-sm text-slate-400">Shop Management System</p>
         </div>
@@ -470,7 +486,7 @@ function Sidebar({ view, setView, currentUser, onLogout, pendingCount }) {
   return (
     <div className="w-16 sm:w-56 flex flex-col shrink-0 min-h-screen bg-taro-deep">
       <div className="flex items-center gap-2 px-4 sm:px-5 py-6 justify-center sm:justify-start">
-        <img src="/favicon.svg" alt={SHOP_NAME} width={36} height={36} className="shrink-0" />
+        <Logo size={36} className="shrink-0" />
         <div className="hidden sm:block">
           <p className="font-display font-semibold text-sm leading-tight text-white">{SHOP_NAME}</p>
           <p className="text-xs text-taro-pale">Shop Manager</p>
@@ -939,7 +955,7 @@ function SalesView({ menu, sales, setSales, currentUser }) {
                 key={item.id}
                 className="bg-white border border-slate-100 rounded-2xl p-4 shadow-sm hover:shadow-md transition-shadow"
               >
-                <img src="/favicon.svg" alt="" width={36} height={36} className="mb-3" />
+                <Logo size={36} alt="" className="mb-3" />
                 <p className="text-sm font-semibold text-slate-700 leading-snug">{item.name}</p>
                 <p className="text-xs text-slate-400 mt-1 mb-3">{item.category}</p>
                 <div className="grid grid-cols-2 gap-1.5">

@@ -20,6 +20,13 @@ body {
   font-family: 'Manrope', system-ui, -apple-system, sans-serif;
 }
 
+.protected-image {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
 .font-display { font-family: 'Fraunces', Georgia, serif; }
 .font-body { font-family: 'Manrope', system-ui, -apple-system, sans-serif; }
 .font-receipt { font-family: 'JetBrains Mono', 'Courier New', monospace; }
