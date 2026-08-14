@@ -365,7 +365,7 @@ function ReceiptModal({ sale, onClose }) {
         submitBtn.innerHTML = originalBtnHTML;
         document.getElementById('messageError').textContent = 'Something went wrong. Please try again or email me directly.';
       });
-  });
+  })
 
 // ============================================================
 // Login
