@@ -10,6 +10,7 @@ import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from 'recha
 // Constants & seed data
 // ============================================================
 const SHOP_NAME = ['Happy Sips'];
+const WEB3FORMS_ACCESS_KEY = '11f962ad-e9c5-4d71-b939-41ed48982523';
 const UNITS = ['kg', 'g', 'L', 'ml', 'pc'];
 const INVENTORY_CATEGORIES = ['Ingredient', 'Supplies'];
 const MENU_CATEGORIES = ['Milk Tea', 'Fruit Tea', 'Fruit Soda'];
@@ -464,7 +465,7 @@ function RequestAccountForm({ onBack }) {
 }
 
 function LoginScreen({ onLogin }) {
-  const [mode, setMode] = useState('login'); // 'login' | 'request'
+  const [mode, setMode] = useState('login'); // 'login' | 'request' | 'contact'
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -493,7 +494,8 @@ function LoginScreen({ onLogin }) {
         </div>
 
         {mode === 'request' ? (
-          <RequestAccountForm onBack={() => setMode('login')} />
+        ) : mode === 'contact' ? (
+          <ContactForm onBack={() => setMode('login')} />
         ) : (
           <>
             <form onSubmit={submit} className="space-y-4">
@@ -527,10 +529,13 @@ function LoginScreen({ onLogin }) {
                 {submitting ? 'Logging in...' : 'Log In'}
               </button>
             </form>
-            <div className="mt-5 pt-4 border-t border-slate-100 text-center">
-              <p className="text-xs text-slate-400 mb-2">The <code className="font-receipt">admin</code>/<code className="font-receipt">staff</code> demo logins are view-only.</p>
-              <button onClick={() => setMode('request')} className="text-sm font-semibold text-taro hover:text-taro-deep">
+            <div className="mt-5 pt-4 border-t border-slate-100 text-center space-y-2">
+              <p className="text-xs text-slate-400">The <code>admin</code>/<code>staff</code> demo logins are view-only.</p>
+              <button onClick={() => setMode('request')} className="text-sm font-semibold text-taro hover:text-taro-deep block w-full">
                 Request a real account →
+              </button>
+              <button onClick={() => setMode('contact')} className="text-xs font-medium text-slate-400 hover:text-slate-600">
+                Contact us
               </button>
             </div>
           </>
