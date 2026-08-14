@@ -39,11 +39,11 @@ function Logo({ size, alt = SHOP_NAME, className = '' }) {
 // Helpers
 // ============================================================
 function formatPHP(amount) {
-  return '₱' + Number(amount || 0).toLocaleString('en-PH', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  return 'P' + Number(amount || 0).toLocaleString('en-PH', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 }
 // Compact version (no decimals) for tight spaces, e.g. the size-picker buttons.
 function formatPHPShort(amount) {
-  return '₱' + Number(amount || 0).toLocaleString('en-PH', { maximumFractionDigits: 0 });
+  return 'P' + Number(amount || 0).toLocaleString('en-PH', { maximumFractionDigits: 0 });
 }
 function getStockStatus(item) {
   if (item.stock <= 0) return 'Out of Stock';
@@ -961,7 +961,6 @@ function SalesView({ menu, sales, setSales, currentUser }) {
                 key={item.id}
                 className="bg-white border border-slate-100 rounded-2xl p-4 shadow-sm hover:shadow-md transition-shadow"
               >
-                <Logo size={36} alt="" className="mb-3" />
                 <p className="text-sm font-semibold text-slate-700 leading-snug">{item.name}</p>
                 <p className="text-xs text-slate-400 mt-1 mb-3">{item.category}</p>
                 <div className="grid grid-cols-2 gap-1.5">
