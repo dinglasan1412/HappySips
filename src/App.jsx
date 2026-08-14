@@ -494,6 +494,7 @@ function LoginScreen({ onLogin }) {
         </div>
 
         {mode === 'request' ? (
+          <RequestAccountForm onBack={() => setMode('login')} />
         ) : mode === 'contact' ? (
           <ContactForm onBack={() => setMode('login')} />
         ) : (
