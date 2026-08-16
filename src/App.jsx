@@ -4,7 +4,6 @@ import {
   Trash2, Pencil, Search, X, User, Lock, AlertTriangle,
   TrendingUp, Receipt, Check, UserPlus
 } from 'lucide-react';
-import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from 'recharts';
 
 // ============================================================
 // Constants & seed data
@@ -16,8 +15,6 @@ const INVENTORY_CATEGORIES = ['Ingredient', 'Supplies'];
 const MENU_CATEGORIES = ['Milk Tea', 'Fruit Tea', 'Fruit Soda'];
 const PAYMENT_METHODS = ['Cash', 'GCash', 'Card'];
 const SIZES = ['Medium', 'Large'];
-const CATEGORY_COLORS = { 'Milk Tea': '#5B4088', 'Fruit Tea': '#A8672C', 'Fruit Soda': '#5C7850', 'Other': '#94A3B8' };
-const PAYMENT_COLORS = { Cash: '#5B4088', GCash: '#5C7AA8', Card: '#A8672C', Other: '#94A3B8' };
 
 // Every place the logo appears goes through here, so the right-click/drag
 // deterrents only need to be defined once.
@@ -547,28 +544,6 @@ function DashboardView({ sales, inventory, menu }) {
   const totalOrders = sales.length;
   const lowStock = inventory.filter(i => getStockStatus(i) !== 'OK');
 
-  const categoryData = (() => {
-    const map = {};
-    sales.forEach(s => s.items.forEach(it => {
-      const cat = it.category || 'Other';
-      map[cat] = (map[cat] || 0) + it.price * it.qty;
-    }));
-    return Object.entries(map).map(([name, value]) => ({ name, value }));
-  })();
-
-  const paymentData = (() => {
-    const map = {};
-    sales.forEach(s => { map[s.payment] = (map[s.payment] || 0) + s.total; });
-    return Object.entries(map).map(([name, value]) => ({ name, value }));
-  })();
-
-  const topSellers = (() => {
-    const map = {};
-    sales.forEach(s => s.items.forEach(it => { map[it.name] = (map[it.name] || 0) + it.qty; }));
-    return Object.entries(map).sort((a, b) => b[1] - a[1]).slice(0, 5);
-  })();
-  const maxSeller = topSellers.length ? topSellers[0][1] : 1;
-
   return (
     <div className="space-y-5">
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -577,47 +552,6 @@ function DashboardView({ sales, inventory, menu }) {
         <KpiCard icon={AlertTriangle} label="Low Stock Items" value={lowStock.length} tone="lychee" />
         <KpiCard icon={Package} label="Menu Items" value={menu.length} tone="brownSugar" />
       </div>
-
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-        <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-5">
-          <h3 className="font-display font-semibold text-slate-700 mb-3">Sales by Category</h3>
-          {categoryData.length === 0 ? (
-            <p className="text-xs text-slate-400 py-10 text-center">No sales recorded yet.</p>
-          ) : (
-            <ResponsiveContainer width="100%" height={200}>
-              <PieChart>
-                <Pie data={categoryData} dataKey="value" nameKey="name" innerRadius={45} outerRadius={75} paddingAngle={3}>
-                  {categoryData.map((entry, i) => (
-                    <Cell key={i} fill={CATEGORY_COLORS[entry.name] || '#94A3B8'} />
-                  ))}
-                </Pie>
-                <Tooltip formatter={(v) => formatPHP(v)} />
-                <Legend wrapperStyle={{ fontSize: 11 }} />
-              </PieChart>
-            </ResponsiveContainer>
-          )}
-        </div>
-
-        <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-5">
-          <h3 className="font-display font-semibold text-slate-700 mb-3">Top Sellers</h3>
-          {topSellers.length === 0 ? (
-            <p className="text-xs text-slate-400 py-10 text-center">No sales recorded yet.</p>
-          ) : (
-            <div className="space-y-3 mt-2">
-              {topSellers.map(([name, qty]) => (
-                <div key={name}>
-                  <div className="flex justify-between text-xs mb-1">
-                    <span className="text-slate-600 font-medium truncate">{name}</span>
-                    <span className="text-slate-400">{qty}</span>
-                  </div>
-                  <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
-                    <div className="h-full bg-taro rounded-full" style={{ width: `${(qty / maxSeller) * 100}%` }} />
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
 
         <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-5">
           <h3 className="font-display font-semibold text-slate-700 mb-3">Payment Methods</h3>
