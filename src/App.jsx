@@ -553,26 +553,6 @@ function DashboardView({ sales, inventory, menu }) {
         <KpiCard icon={Package} label="Menu Items" value={menu.length} tone="brownSugar" />
       </div>
 
-        <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-5">
-          <h3 className="font-display font-semibold text-slate-700 mb-3">Payment Methods</h3>
-          {paymentData.length === 0 ? (
-            <p className="text-xs text-slate-400 py-10 text-center">No sales recorded yet.</p>
-          ) : (
-            <ResponsiveContainer width="100%" height={200}>
-              <PieChart>
-                <Pie data={paymentData} dataKey="value" nameKey="name" innerRadius={45} outerRadius={75} paddingAngle={3}>
-                  {paymentData.map((entry, i) => (
-                    <Cell key={i} fill={PAYMENT_COLORS[entry.name] || '#94A3B8'} />
-                  ))}
-                </Pie>
-                <Tooltip formatter={(v) => formatPHP(v)} />
-                <Legend wrapperStyle={{ fontSize: 11 }} />
-              </PieChart>
-            </ResponsiveContainer>
-          )}
-        </div>
-      </div>
-
       <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-5">
         <div className="flex items-center gap-2 mb-3">
           <AlertTriangle size={16} className="text-brown-sugar" />
