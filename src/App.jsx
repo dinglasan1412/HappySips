@@ -566,7 +566,7 @@ function DashboardView({ sales, inventory, menu }) {
               <div key={item.id} className="flex items-center justify-between px-3 py-2 bg-slate-50 rounded-xl">
                 <span className="text-sm text-slate-600">{item.name}</span>
                 <div className="flex items-center gap-2">
-                  <span className="text-xs text-slate-400 font-receipt">{item.stock} {item.unit} left</span>
+                  <span className="text-xs text-slate-400">{item.stock} {item.unit} left</span>
                   <StatusBadge status={getStockStatus(item)} />
                 </div>
               </div>
@@ -711,8 +711,8 @@ function InventoryView({ inventory, setInventory, currentUser, canEdit }) {
                 <tr key={item.id} className="border-t border-slate-50 hover:bg-slate-50/60">
                   <td className="px-5 py-3 font-medium text-slate-700">{item.name}</td>
                   <td className="px-5 py-3 text-slate-500">{item.category}</td>
-                  <td className="px-5 py-3 text-slate-600 font-receipt">{item.stock} {item.unit}</td>
-                  <td className="px-5 py-3 text-slate-500 font-receipt">{item.reorderLevel} {item.unit}</td>
+                  <td className="px-5 py-3 text-slate-600">{item.stock} {item.unit}</td>
+                  <td className="px-5 py-3 text-slate-500">{item.reorderLevel} {item.unit}</td>
                   <td className="px-5 py-3"><StatusBadge status={getStockStatus(item)} /></td>
                   {canEdit && (
                     <td className="px-5 py-3">
@@ -886,7 +886,7 @@ function SalesView({ menu, sales, setSales, currentUser }) {
                       className="flex flex-col items-center justify-center rounded-lg py-1.5 bg-taro-light text-taro-deep hover:bg-taro hover:text-white transition-colors"
                     >
                       <span className="text-xs font-semibold leading-tight">{size}</span>
-                      <span className="text-xs font-receipt leading-tight">{formatPHPShort(item.sizes[size])}</span>
+                      <span className="text-xs leading-tight">{formatPHPShort(item.sizes[size])}</span>
                     </button>
                   ))}
                 </div>
@@ -907,7 +907,7 @@ function SalesView({ menu, sales, setSales, currentUser }) {
                 <div key={`${c.menuId}-${c.size}`} className="flex items-center justify-between gap-2">
                   <div className="min-w-0">
                     <p className="text-xs font-semibold text-slate-700 truncate">{c.name} <span className="font-normal text-slate-400">({c.size})</span></p>
-                    <p className="text-xs text-slate-400 font-receipt">{formatPHP(c.price)} each</p>
+                    <p className="text-xs text-slate-400">{formatPHP(c.price)} each</p>
                   </div>
                   <div className="flex items-center gap-1.5 shrink-0">
                     <button onClick={() => changeQty(c.menuId, c.size, -1)} className="w-6 h-6 rounded-lg bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-500">
@@ -965,7 +965,7 @@ function SalesView({ menu, sales, setSales, currentUser }) {
             )}
             <div className="flex justify-between text-sm font-bold text-slate-700 pt-1">
               <span>Total</span>
-              <span className="font-receipt">{formatPHP(total)}</span>
+              <span>{formatPHP(total)}</span>
             </div>
             {!currentUser.verified && (
               <p className="text-xs text-slate-500 bg-slate-50 rounded-xl px-3 py-2.5">
@@ -1030,7 +1030,7 @@ function SalesView({ menu, sales, setSales, currentUser }) {
                       <div className="text-xs text-slate-400 font-receipt">{s.reference}</div>
                     )}
                   </td>
-                  <td className="px-5 py-3 text-right font-semibold text-slate-700 font-receipt">{formatPHP(s.total)}</td>
+                  <td className="px-5 py-3 text-right font-semibold text-slate-700">{formatPHP(s.total)}</td>
                   <td className="px-5 py-3 text-right">
                     {currentUser.verified && (
                       <button onClick={() => setConfirmDeleteSale(s)} className="p-1.5 text-slate-400 hover:text-lychee hover:bg-lychee-light rounded-lg">
