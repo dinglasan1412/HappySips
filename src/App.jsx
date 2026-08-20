@@ -460,11 +460,6 @@ function LoginScreen({ onLogin }) {
               <button onClick={() => setMode('request')} className="text-sm font-semibold text-taro hover:text-taro-deep block w-full">
                 Request a real account →
               </button>
-                href={`mailto:lykadinglasan12@gmail.com?subject=${encodeURIComponent('Message from ' + SHOP_NAME + ' website')}`}
-                className="text-xs font-medium text-slate-400 hover:text-slate-600"
-              >
-                Contact us
-              </a>
             </div>
           </>
         )}
