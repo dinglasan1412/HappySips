@@ -9,7 +9,6 @@ import {
 // Constants & seed data
 // ============================================================
 const SHOP_NAME = ['Happy Sips'];
-const WEB3FORMS_ACCESS_KEY = '11f962ad-e9c5-4d71-b939-41ed48982523';
 const UNITS = ['kg', 'g', 'L', 'ml', 'pc'];
 const INVENTORY_CATEGORIES = ['Ingredient', 'Supplies'];
 const MENU_CATEGORIES = ['Milk Tea', 'Fruit Tea', 'Fruit Soda'];
@@ -393,7 +392,7 @@ function RequestAccountForm({ onBack }) {
 }
 
 function LoginScreen({ onLogin }) {
-  const [mode, setMode] = useState('login'); // 'login' | 'request' | 'contact'
+  const [mode, setMode] = useState('login'); // 'login' | 'request'
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -423,8 +422,6 @@ function LoginScreen({ onLogin }) {
 
         {mode === 'request' ? (
           <RequestAccountForm onBack={() => setMode('login')} />
-        ) : mode === 'contact' ? (
-          <ContactForm onBack={() => setMode('login')} />
         ) : (
           <>
             <form onSubmit={submit} className="space-y-4">
@@ -463,9 +460,11 @@ function LoginScreen({ onLogin }) {
               <button onClick={() => setMode('request')} className="text-sm font-semibold text-taro hover:text-taro-deep block w-full">
                 Request a real account →
               </button>
-              <button onClick={() => setMode('contact')} className="text-xs font-medium text-slate-400 hover:text-slate-600">
+                href={`mailto:lykadinglasan12@gmail.com?subject=${encodeURIComponent('Message from ' + SHOP_NAME + ' website')}`}
+                className="text-xs font-medium text-slate-400 hover:text-slate-600"
+              >
                 Contact us
-              </button>
+              </a>
             </div>
           </>
         )}
